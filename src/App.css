@@ -45,6 +45,10 @@ body {
   font: 400 10vh "tr2ntr2n";
 }
 
+.tituloPequeno{
+  /*font: 400 10vh "Vibur";*/
+  font: 200 5vh "tr2ntr2n";
+}
 .logo b{
   color: #fee;
   text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em #33f1ff, 0 0 0.5em #33f1ff, 0 0 0.1em #33f1ff, 0 10px 3px #000;

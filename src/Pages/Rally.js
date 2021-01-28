@@ -11,28 +11,32 @@ export default function Rally() {
 
   useEffect(() => {
     var foo = [];
-    getRally().once('value', (snapshot) => {
-      snapshot.forEach((childSnapshot) => {
-        foo.add(childSnapshot.val());
-        console.log(childSnapshot.val());
+    getRally().once('value').then(function(dataSnapshot) {
+      dataSnapshot.forEach((childSnapshot) => {
+        foo.push(childSnapshot.val());
       });
+      setLoad(true);
+      setRallyState(foo);
     });
   },[]);
 
   return (
-    <Grid
-      container
-      direction="row"
-      justify="center"
-      alignItems="center" 
-      spacing={5}
-      style={{ minHeight: '90vh'}}> 
-        {/*load
-          ?null
-          :rallyState.map((equipo, index) => {
-            console.log(equipo);
-            return <Grid key={index} item lg={4} sm={12}> </Grid>;
-          })*/}
+    <div>
+      <Grid
+        container
+        direction="row"
+        justify="center"
+        alignItems="center" 
+        spacing={5}
+        style={{ minHeight: '90vh'}}> 
+        {load
+          ?rallyState.map((equipo, index) => {
+            return <Grid key={index} item lg={4} sm={12} className="logo tituloMediano"> {equipo.Nombre}</Grid>;
+          })
+          :null}
+          <div className="logo tituloMediano">HOLA</div>
       </Grid>
+    </div>
+    
   );
 }

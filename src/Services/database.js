@@ -26,5 +26,5 @@ export function getAvataaar() {
 }
 
 export function getRally() {
-    return db.ref('/Rally/').once('value')
+    return db.ref('/Rally/')
 }

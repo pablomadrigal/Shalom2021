@@ -10,14 +10,13 @@ import '../App.css'
 import Header from '../Components/General/Header';
 import SignIn from "../Pages/Login";
 import SignUp from "../Pages/Signup"
-import Rally from "../Pages/Rally"
 
 import SantoCard from '../Components/Santos/SantosCard'
 import AvatarGenerator from '../Components/Avataaar/AvatarGenerator'
 
 import { santos } from '../Data/santosData'
 import { auth } from '../Services/firebase';
-import {getAvataaar} from "../Services/database"
+import {getAvataaar, getRally} from "../Services/database"
 import { AVATAAAR_TYPES } from "../Data/avataaarData";
 
 const useStyles = makeStyles((theme) => ({
@@ -61,9 +60,17 @@ function HomePage() {
     const [registro, setRegistro] = useState(true);
     const [page, setPage] = useState(0);
     const [avatarState, setAvatarState] = useState(initialAvatarState);
+    const [rallyState, setRallyState] = useState([{Nombre:"Hola"},{Nombre:"Adios"}]);
 
     useEffect(() => {
       getAvatar();
+      var foo = [];
+      getRally().once('value').then(function(dataSnapshot) {
+        dataSnapshot.forEach((childSnapshot) => {
+          foo.push(childSnapshot.val());
+        });
+        setRallyState(foo);
+      });
     },[]);
 
 
@@ -97,10 +104,10 @@ function HomePage() {
     setRegistro(true);
   };
 
-  const homeContent = pagina =>{
+  const homeContent = () =>{
     return(<div>
       {(()=>{
-        switch (pagina) {
+        switch (page) {
           case 0:
             return <Grid 
               container
@@ -137,7 +144,20 @@ function HomePage() {
               </Grid>
             );
           case 2:
-            return <div><Rally/></div>;
+            return (
+              <Grid
+              container
+              direction="column"
+              justify="center"
+              alignItems="center"
+              >
+                {rallyState.map((equipo, index) => {
+                  console.log(equipo)
+                  return <Grid key={index} item className="logo tituloPequeno" style={{ height: '200px'}}>
+                  <b>{equipo.Nombre}<span>     -     </span><span>{equipo.Puntaje}</span></b>
+                </Grid>;
+                })}
+            </Grid>);
           case 3:
             return <div>Pagina 3</div>;
           case 4:

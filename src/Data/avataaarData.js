@@ -1,0 +1,228 @@
+export const avatar_options = {
+    avatarStyle: [
+      { id: 0, label: "Circle" },
+      { id: 1, label: "Transparent" }
+    ],
+    topType: [
+      { id: 0, label: "NoHair" },
+      { id: 1, label: "Eyepatch" },
+      { id: 2, label: "Hat" },
+      { id: 3, label: "Hijab" },
+      { id: 4, label: "Turban" },
+      { id: 5, label: "WinterHat1" },
+      { id: 6, label: "WinterHat2" },
+      { id: 7, label: "WinterHat3" },
+      { id: 8, label: "WinterHat4" },
+      { id: 9, label: "LongHairBigHair" },
+      { id: 10, label: "LongHairBob" },
+      { id: 11, label: "LongHairBun" },
+      { id: 12, label: "LongHairCurly" },
+      { id: 13, label: "LongHairCurvy" },
+      { id: 14, label: "LongHairDreads" },
+      { id: 15, label: "LongHairFrida" },
+      { id: 16, label: "LongHairFro" },
+      { id: 17, label: "LongHairFroBand" },
+      { id: 18, label: "LongHairNotTooLong" },
+      { id: 19, label: "LongHairShavedSides" },
+      { id: 20, label: "LongHairMiaWallace" },
+      { id: 21, label: "LongHairStraight" },
+      { id: 22, label: "LongHairStraight2" },
+      { id: 23, label: "LongHairStraightStrand" },
+      { id: 24, label: "ShortHairDreads01" },
+      { id: 25, label: "ShortHairDreads02" },
+      { id: 26, label: "ShortHairFrizzle" },
+      { id: 27, label: "ShortHairShaggyMullet" },
+      { id: 28, label: "ShortHairShortCurly" },
+      { id: 29, label: "ShortHairShortFlat" },
+      { id: 30, label: "ShortHairShortRound" },
+      { id: 31, label: "ShortHairShortWaved" },
+      { id: 32, label: "ShortHairSides" },
+      { id: 33, label: "ShortHairTheCaesar" },
+      { id: 34, label: "ShortHairTheCaesarSidePart" }
+    ],
+    accessoriesType: [
+      { id: 0, label: "Blank" },
+      { id: 1, label: "Kurt" },
+      { id: 2, label: "Prescription01" },
+      { id: 3, label: "Prescription02" },
+      { id: 4, label: "Round" },
+      { id: 5, label: "Sunglasses" },
+      { id: 6, label: "Wayfarers" }
+    ],
+    hatColor: [
+      { id: 0, label: "Black" },
+      { id: 1, label: "Blue01" },
+      { id: 2, label: "Blue02" },
+      { id: 3, label: "Blue03" },
+      { id: 4, label: "Gray01" },
+      { id: 5, label: "Gray02" },
+      { id: 6, label: "Heather" },
+      { id: 7, label: "PastelBlue" },
+      { id: 8, label: "PastelGreen" },
+      { id: 9, label: "PastelOrange" },
+      { id: 10, label: "PastelRed" },
+      { id: 11, label: "PastelYellow" },
+      { id: 12, label: "Pink" },
+      { id: 13, label: "Red" },
+      { id: 14, label: "White" }
+    ],
+    hairColor: [
+      { id: 0, label: "Auburn" },
+      { id: 1, label: "Black" },
+      { id: 2, label: "Blonde" },
+      { id: 3, label: "BlondeGolden" },
+      { id: 4, label: "Brown" },
+      { id: 5, label: "BrownDark" },
+      { id: 6, label: "PastelPink" },
+      { id: 7, label: "Platinum" },
+      { id: 8, label: "Red" },
+      { id: 9, label: "SilverGray" }
+    ],
+    facialHairType: [
+      { id: 0, label: "Blank" },
+      { id: 1, label: "BeardMedium" },
+      { id: 2, label: "BeardLight" },
+      { id: 3, label: "BeardMajestic" },
+      { id: 4, label: "MoustacheFancy" },
+      { id: 5, label: "MoustacheMagnum" }
+    ],
+    facialHairColor: [
+      { id: 0, label: "Auburn" },
+      { id: 1, label: "Black" },
+      { id: 2, label: "Blonde" },
+      { id: 3, label: "BlondeGolden" },
+      { id: 4, label: "Brown" },
+      { id: 5, label: "BrownDark" },
+      { id: 6, label: "Platinum" },
+      { id: 7, label: "Red" }
+    ],
+    clotheType: [
+      { id: 0, label: "BlazerShirt" },
+      { id: 1, label: "BlazerSweater" },
+      { id: 2, label: "CollarSweater" },
+      { id: 3, label: "GraphicShirt" },
+      { id: 4, label: "Hoodie" },
+      { id: 5, label: "Overall" },
+      { id: 6, label: "ShirtCrewNeck" },
+      { id: 7, label: "ShirtScoopNeck" },
+      { id: 8, label: "ShirtVNeck" }
+    ],
+    clotheColor: [
+      { id: 0, label: "Black" },
+      { id: 1, label: "Blue01" },
+      { id: 2, label: "Blue02" },
+      { id: 3, label: "Blue03" },
+      { id: 4, label: "Gray01" },
+      { id: 5, label: "Gray02" },
+      { id: 6, label: "Heather" },
+      { id: 7, label: "PastelBlue" },
+      { id: 8, label: "PastelGreen" },
+      { id: 9, label: "PastelOrange" },
+      { id: 10, label: "PastelRed" },
+      { id: 11, label: "PastelYellow" },
+      { id: 12, label: "Pink" },
+      { id: 13, label: "Red" },
+      { id: 14, label: "White" }
+    ],
+    graphicType: [
+      { id: 0, label: "Bat" },
+      { id: 1, label: "Cumbia" },
+      { id: 2, label: "Deer" },
+      { id: 3, label: "Diamond" },
+      { id: 4, label: "Hola" },
+      { id: 5, label: "Pizza" },
+      { id: 6, label: "Resist" },
+      { id: 7, label: "Selena" },
+      { id: 8, label: "Bear" },
+      { id: 9, label: "SkullOutline" },
+      { id: 10, label: "Skull" }
+    ],
+    eyeType: [
+      { id: 0, label: "Close" },
+      { id: 1, label: "Cry" },
+      { id: 2, label: "Default" },
+      { id: 3, label: "Dizzy" },
+      { id: 4, label: "EyeRoll" },
+      { id: 5, label: "Happy" },
+      { id: 6, label: "Hearts" },
+      { id: 7, label: "Side" },
+      { id: 8, label: "Squint" },
+      { id: 9, label: "Surprised" },
+      { id: 10, label: "Wink" },
+      { id: 11, label: "WinkWacky" }
+    ],
+    eyebrowType: [
+      { id: 0, label: "UpDownNatural" },
+      { id: 1, label: "Angry" },
+      { id: 2, label: "AngryNatural" },
+      { id: 3, label: "Default" },
+      { id: 4, label: "DefaultNatural" },
+      { id: 5, label: "FlatNatural" },
+      { id: 6, label: "RaisedExcited" },
+      { id: 7, label: "RaisedExcitedNatural" },
+      { id: 8, label: "SadConcerned" },
+      { id: 9, label: "SadConcernedNatural" },
+      { id: 10, label: "UnibrowNatural" },
+      { id: 11, label: "UpDown" }
+    ],
+    mouthType: [
+      { id: 0, label: "Concerned" },
+      { id: 1, label: "Default" },
+      { id: 2, label: "Disbelief" },
+      { id: 3, label: "Eating" },
+      { id: 4, label: "Grimace" },
+      { id: 5, label: "Sad" },
+      { id: 6, label: "ScreamOpen" },
+      { id: 7, label: "Serious" },
+      { id: 8, label: "Smile" },
+      { id: 9, label: "Tongue" },
+      { id: 10, label: "Twinkle" },
+      { id: 11, label: "Vomit" }
+    ],
+    skinColor: [
+      { id: 0, label: "Black" },
+      { id: 1, label: "Tanned" },
+      { id: 2, label: "Yellow" },
+      { id: 3, label: "Pale" },
+      { id: 4, label: "Light" },
+      { id: 5, label: "Brown" },
+      { id: 6, label: "DarkBrown" }
+    ]
+  };
+  
+  export const randomlyOneOfList = (list) => {
+    return list[Math.floor(Math.random() * Math.floor(list.length))];
+  };
+  
+  export const AVATAAAR_TYPES = {
+    AVATARSTYLE: "avatarStyle",
+    TOPTYPE: "topType",
+    ACCESSORIESTYPE: "accessoriesType",
+    //HATCOLOR: "hatColor",
+    HAIRCOLOR: "hairColor",
+    FACIALHAIRTYPE: "facialHairType",
+    FACIALHAIRCOLOR: "facialHairColor",
+    CLOTHETYPE: "clotheType",
+    CLOTHECOLOR: "clotheColor",
+    EYETYPE: "eyeType",
+    EYEBROWTYPE: "eyebrowType",
+    MOUTHTYPE: "mouthType",
+    SKINCOLOR: "skinColor"
+  };
+  
+  export const CHANGE_BUTTONS_TYPES = {
+    AVATARSTYLE: "Fondo",
+    TOPTYPE: "Pelo o sombrero",
+    ACCESSORIESTYPE: "Accesorio",
+    //HATCOLOR: "Color de Sombrero",
+    HAIRCOLOR: "Color de Pelo",
+    FACIALHAIRTYPE: "Barba",
+    FACIALHAIRCOLOR: "Color de Barba",
+    CLOTHETYPE: "Tipo de Ropa",
+    CLOTHECOLOR: "Color de Ropa",
+    EYETYPE: "Tipo de Ojos",
+    EYEBROWTYPE: "Tipo de Cejas",
+    MOUTHTYPE: "Tipo de Boca",
+    SKINCOLOR: "Color de piel"
+  };
+  

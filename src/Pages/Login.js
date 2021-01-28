@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import {
-    Avatar,
     Button,
     CssBaseline,
     TextField,
     Grid,
-    Box,
     Typography,
     Container,
     makeStyles,
@@ -13,21 +11,14 @@ import {
     FormControlLabel,
     Checkbox
 } from '@material-ui/core'
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { signinRemember, signinNoRemember } from '../Services/auth';
-import Header from '../Components/General/Header';
-import Footer from '../Components/General/Footer';
 
 const useStyles = makeStyles((theme) => ({
     paper: {
-        marginTop: theme.spacing(8),
         display: 'flex',
+        marginBottom: theme.spacing(2),
         flexDirection: 'column',
         alignItems: 'center',
-    },
-    avatar: {
-        margin: theme.spacing(1),
-        backgroundColor: theme.palette.secondary.main,
     },
     form: {
         width: '100%', // Fix IE 11 issue.
@@ -48,10 +39,11 @@ function SignIn(props) {
         console.log(remember);
         try {
             if (remember) {
-                await signinRemember(email, password)
+                await signinRemember(email, password).then(props.closeModal())
             } else {
-                await signinNoRemember(email, password)
+                await signinNoRemember(email, password).then(props.closeModal())
             }
+            props.actualizarAvatar();
         } catch (error) {
             alert(error.message)
         }
@@ -59,13 +51,9 @@ function SignIn(props) {
 
     return (
         <div>
-            <Header />
             <Container component="main" maxWidth="xs">
                 <CssBaseline />
                 <div className={classes.paper}>
-                    <Avatar className={classes.avatar}>
-                        <LockOutlinedIcon />
-                    </Avatar>
                     <Typography component="h1" variant="h5">
                         Sign in
                     </Typography>
@@ -76,7 +64,7 @@ function SignIn(props) {
                             required
                             fullWidth
                             id="email"
-                            label="Email Address"
+                            label="Email"
                             name="email"
                             autoComplete="email"
                             autoFocus
@@ -89,7 +77,7 @@ function SignIn(props) {
                             required
                             fullWidth
                             name="password"
-                            label="Password"
+                            label="Contraseña"
                             type="password"
                             id="password"
                             autoComplete="current-password"
@@ -110,24 +98,16 @@ function SignIn(props) {
                         >
                             Sign In
                         </Button>
-                        <Grid container>
-                            <Grid item xs>
-                                <Link href="/forgotPass" variant="body2">
-                                    Forgot password?
-                                </Link>
-                            </Grid>
+                        <Grid container justify="flex-end">
                             <Grid item>
-                                <Link href="/signup" variant="body2">
-                                    {"Don't have an account? Sign Up"}
+                                <Link onClick={()=>props.noTieneCuenta()} variant="body2">
+                                    No tienes cuenta? Sign Up
                                 </Link>
                             </Grid>
                         </Grid>
                     </form>
                 </div>
             </Container>
-            <Box mt={8}>
-                <Footer />
-            </Box>
         </div>
     );
 }

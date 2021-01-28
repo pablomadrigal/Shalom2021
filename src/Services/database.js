@@ -1,31 +1,30 @@
 import { auth, db } from './firebase';
 
-export function addUserInfo(Name, LastName) {
-    if (!auth.currentUser) {
-        return alert('Not authorized')
-    }
-    //var user = auth.currentUser.uid;
-    return db.ref(`users/`).set({
-        user: {
-            name: Name,
-            lastName: LastName
-        }
-    });
-}
-
-export function addNewMask(id) {
+export function addAvataaar(avatarState) {
     var user = null;
     if (auth().currentUser) {
         user = auth().currentUser.uid;
-        db.ref("/users/" + user + "/masks/" + id).set(0);
+        db.ref("/users/" + user + "/avataaar/").set(avatarState);
     }
-    var mask = {
-        userId: user,
-        maskUses: 50
-    }
-    db.ref("/masks/" + id).set(mask);
 }
 
-export function updateMaskUses(id) {
+export function addUserInfo(nombre) {
+    var user = null;
+    if (auth().currentUser) {
+        user = auth().currentUser.uid;
+        db.ref("/users/" + user + "/nombre/").set(nombre);
+    }
+}
 
+export function getAvataaar() {
+    if (auth().currentUser) {
+        var user = auth().currentUser.uid;
+        return db.ref('/users/' + user).once('value')
+    }else{
+        return null;
+    }
+}
+
+export function getRally() {
+    return db.ref('/Rally/').once('value')
 }

@@ -1,78 +1,52 @@
-import React, { Component } from 'react';
-import {
-  Route,
-  BrowserRouter as Router,
-  Switch,
-  Redirect,
-} from "react-router-dom";
-import Home from './Pages/Home';
-import Profile from './Pages/Profile';
-import Signup from './Pages/Signup';
-import Login from './Pages/Login';
-import { auth } from './Services/firebase';
+import React, {useState} from 'react';
+import './App.css'
+import { 
+  Grid,
+  CssBaseline } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 
-function PrivateRoute({ component: Component, authenticated, ...rest }) {
-  return (
-    <Route
-      {...rest}
-      render={(props) => authenticated === true
-        ? <Component {...props} />
-        : <Redirect to={{ pathname: '/login', state: { from: props.location } }} />}
-    />
-  )
-}
+import HomePage from './Pages/Home';
 
-function PublicRoute({ component: Component, authenticated, ...rest }) {
-  return (
-    <Route
-      {...rest}
-      render={(props) => authenticated === false
-        ? <Component {...props} />
-        : <Redirect to='/profile' />}
-    />
-  )
-}
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+    height: '100vh',
+    margin: 0,
+    padding: 0,
+    backgroundColor: 'black'
+  },
+}));
 
-class App extends Component {
+function App() {
+  const classes = useStyles();
+  const [intro, setIntro] = useState(true);
 
-  constructor() {
-    super();
-    this.state = {
-      authenticated: false,
-      loading: true,
-    };
-  }
-
-  componentDidMount() {
-    auth().onAuthStateChanged((user) => {
-      if (user) {
-        this.setState({
-          authenticated: true,
-          loading: false,
-        });
-      } else {
-        this.setState({
-          authenticated: false,
-          loading: false,
-        });
-      }
-    })
-  }
-
-  render() {
-    return this.state.loading === true ? <h2>Loading...</h2> : (
-      <Router>
-        <Switch>
-          <Route exact path="/" component={Home}></Route>
-          <PrivateRoute path="/profile" authenticated={this.state.authenticated} component={Profile}></PrivateRoute>
-          <PublicRoute path="/signup" authenticated={this.state.authenticated} component={Signup}></PublicRoute>
-          <PublicRoute path="/login" authenticated={this.state.authenticated} component={Login}></PublicRoute>
-          <Redirect from="*" to="/" />
-        </Switch>
-
-      </Router>
+  const renderIntro = () => {
+    return(
+      <Grid container
+        spacing={0}
+        direction="column"
+        alignItems="center"
+        justify="center"
+        style={{ minHeight: '100vh' }}>
+          <CssBaseline />
+        <Grid item xs = {12} className="tituloGrande logo">
+          <b>E<span>N</span>T<span>E</span>R       <span>T</span>H<span>E</span>         <span>G</span>A<span>M</span>E</b>
+        </Grid>
+        <Grid item xs = {12}>
+          <button className="a-n2" onClick={() => setIntro(false)}>
+            Entrar
+          </button>        
+        </Grid>
+      </Grid>
     );
   }
+
+  return (
+    <div className={classes.root}>
+      {intro ? renderIntro():<HomePage/>}
+    </div>
+  );
 }
 
 export default App;

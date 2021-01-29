@@ -3,7 +3,8 @@ import {
     Container,
     makeStyles,
     Dialog,
-    Grid
+    Grid,
+    Divider
 } from '@material-ui/core'
 
 import '../App.css'
@@ -12,8 +13,10 @@ import SignIn from "../Pages/Login";
 import SignUp from "../Pages/Signup"
 
 import SantoCard from '../Components/Santos/SantosCard'
+import MaterialCard from '../Components/General/MaterialCard'
 import AvatarGenerator from '../Components/Avataaar/AvatarGenerator'
 
+import { material } from '../Data/materialData'
 import { santos } from '../Data/santosData'
 import { auth } from '../Services/firebase';
 import {getAvataaar, getRally} from "../Services/database"
@@ -28,7 +31,8 @@ const useStyles = makeStyles((theme) => ({
     },
     root: {
         flexGrow: 1,
-        backgroundColor: 'black'
+        backgroundColor: 'black',
+        maxHeight: '20vh'
       },
       paperCard: {
         padding: theme.spacing(5),
@@ -125,9 +129,9 @@ function HomePage() {
               <Grid item xs={6} align="center">
                   <button className="a-n2" onClick={() => setPage(2)}>Rally</button>
               </Grid>
-              {/*<Grid item xs={6} align="center">
+              {<Grid item xs={6} align="center">
                   <button className="a-n2" onClick={() => setPage(3)}>Recursos</button>
-                </Grid>*/}
+                </Grid>}
             </Grid>;
           case 1:
             return (
@@ -137,9 +141,11 @@ function HomePage() {
               justify="center"
               alignItems="center" 
               spacing={5}
-              style={{ minHeight: '90vh'}}> 
+              className={"flex-section"}
+              > 
                 {santos.map((santo, index) => {
-                  return <Grid key={index} item lg={4} sm={12}> <SantoCard santo={santo}/></Grid>;
+                  return <Grid key={index} item lg={4} sm={12}
+                  className={"flex-col-scroll"} > <SantoCard santo={santo}/></Grid>;
                 })}
               </Grid>
             );
@@ -150,16 +156,34 @@ function HomePage() {
               direction="column"
               justify="center"
               alignItems="center"
+              className={"flex-section"}
               >
                 {rallyState.map((equipo, index) => {
                   console.log(equipo)
-                  return <Grid key={index} item className="logo tituloPequeno" style={{ height: '200px'}}>
-                  <b>{equipo.Nombre}<span>     -     </span><span>{equipo.Puntaje}</span></b>
+                  return <Grid key={index} item 
+                  className={"flex-col-scroll"}  style={{ height: '200px'}}>
+                  <b className="logo tituloPequeno">{equipo.Nombre}<span>     -     </span><span>{equipo.Puntaje}</span></b>
                 </Grid>;
                 })}
             </Grid>);
           case 3:
-            return <div>Pagina 3</div>;
+            return (
+              <div
+              className={"flex-section"}>
+                <div
+              className={"flex-col-scroll"}>
+            <Grid
+              container
+              direction="row"
+              justify="center"
+              alignItems="center" 
+              spacing={5}
+              >  
+                {material.map((mat, index) => {
+                  return <Grid key={index} item> <MaterialCard material={mat}/></Grid>;
+                })}
+              </Grid></div></div>
+            ); //MaterialCard
           case 4:
             return <div><AvatarGenerator initialAvatarState={avatarState}/></div>;
           default:
@@ -176,12 +200,12 @@ function HomePage() {
   );
 
     return (
-        <div>
+        <div className={classes.root}>
             <Header Login={handleLogin} Signup={handleSignup} Signout={handleSignout} Home={handleHome} Avatar={()=>setPage(4)} AvatarState={avatarState}  Page={page}/>
             <Dialog onClose={handleClose} aria-labelledby="simple-dialog-title" open={openModal}>
                 {modalBody}
             </Dialog>
-            <Container bgcolor="text.primary" component="main">
+            <Container >
                 {homeContent(page)}
             </Container>
         </div>

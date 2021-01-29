@@ -6,6 +6,8 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 
 import HomePage from './Pages/Home';
+import {material} from './Data/materialData'
+import MaterialCard from './Components/General/MaterialCard'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,8 +44,9 @@ function App() {
     );
   }
 
+
   return (
-    <div className={classes.root}>
+    <div className={classes.root} >
       {intro ? renderIntro():<HomePage/>}
     </div>
   );

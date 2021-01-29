@@ -125,9 +125,9 @@ function HomePage() {
               <Grid item xs={6} align="center">
                   <button className="a-n2" onClick={() => setPage(2)}>Rally</button>
               </Grid>
-              <Grid item xs={6} align="center">
+              {/*<Grid item xs={6} align="center">
                   <button className="a-n2" onClick={() => setPage(3)}>Recursos</button>
-              </Grid>
+                </Grid>*/}
             </Grid>;
           case 1:
             return (

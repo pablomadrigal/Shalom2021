@@ -3,8 +3,7 @@ import {
     Container,
     makeStyles,
     Dialog,
-    Grid,
-    Divider
+    Grid
 } from '@material-ui/core'
 
 import '../App.css'
@@ -23,22 +22,21 @@ import {getAvataaar, getRally} from "../Services/database"
 import { AVATAAAR_TYPES } from "../Data/avataaarData";
 
 const useStyles = makeStyles((theme) => ({
-    paper: {
-        marginTop: theme.spacing(8),
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-    },
-    root: {
-        flexGrow: 1,
-        backgroundColor: 'black',
-        maxHeight: '20vh'
-      },
-      paperCard: {
-        padding: theme.spacing(5),
-        textAlign: 'center',
-        color: theme.palette.text.secondary,
-      },
+  root: {
+    flexGrow: 1,
+    backgroundColor: 'black'
+  },
+  paper: {
+      marginTop: theme.spacing(8),
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+  },
+  paperCard: {
+    padding: theme.spacing(5),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  },
 }));
 
 const initialAvatarState = {
@@ -135,19 +133,22 @@ function HomePage() {
             </Grid>;
           case 1:
             return (
+              <div
+              className={"flex-section"}
+              style={{ height: '650px'}}>
               <Grid
               container
               direction="row"
               justify="center"
               alignItems="center" 
               spacing={5}
-              className={"flex-section"}
+              className={"flex-col-scroll"}
               > 
                 {santos.map((santo, index) => {
-                  return <Grid key={index} item lg={4} sm={12}
-                  className={"flex-col-scroll"} > <SantoCard santo={santo}/></Grid>;
+                  return <Grid key={index} item lg={4} sm={12} > <SantoCard santo={santo}/></Grid>;
                 })}
               </Grid>
+              </div>
             );
           case 2:
             return (
@@ -161,8 +162,8 @@ function HomePage() {
                 {rallyState.map((equipo, index) => {
                   console.log(equipo)
                   return <Grid key={index} item 
-                  className={"flex-col-scroll"}  style={{ height: '200px'}}>
-                  <b className="logo tituloPequeno">{equipo.Nombre}<span>     -     </span><span>{equipo.Puntaje}</span></b>
+                  className={"flex-col-scroll logo tituloPequeno"}  style={{ height: '100px'}}>
+                  <b>{equipo.Nombre}<span>     -     </span><span>{equipo.Puntaje}</span></b>
                 </Grid>;
                 })}
             </Grid>);
@@ -171,7 +172,8 @@ function HomePage() {
               <div
               className={"flex-section"}>
                 <div
-              className={"flex-col-scroll"}>
+              className={"flex-col-scroll"}
+              style={{ height: '650px'}}>
             <Grid
               container
               direction="row"

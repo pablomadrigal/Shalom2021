@@ -6,8 +6,6 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 
 import HomePage from './Pages/Home';
-import {material} from './Data/materialData'
-import MaterialCard from './Components/General/MaterialCard'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,8 +27,7 @@ function App() {
         spacing={0}
         direction="column"
         alignItems="center"
-        justify="center"
-        style={{ minHeight: '100vh' }}>
+        justify="center">
           <CssBaseline />
         <Grid item xs = {12} className="tituloGrande logo">
           <b>E<span>N</span>T<span>E</span>R       <span>T</span>H<span>E</span>         <span>G</span>A<span>M</span>E</b>

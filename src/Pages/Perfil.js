@@ -5,7 +5,7 @@ import {
 
 import {getRally} from "../Services/database"
 
-export default function Rally() {
+export default function Perfil() {
   const [rallyState, setRallyState] = useState([{Nombre:"Hola"},{Nombre:"Adios"}]);
   const [load, setLoad] = useState(false);
 
@@ -31,10 +31,10 @@ export default function Rally() {
         style={{ minHeight: '90vh'}}> 
         {load
           ?rallyState.map((equipo, index) => {
-            return <Grid key={index} item lg={4} sm={12} className="logo tituloMediano"> {equipo.Nombre}</Grid>;
+            return <Grid key={index} item lg={4} sm={12} className="logo tituloPequeno"
+            style={{ height: '150px'}}> {equipo.Nombre}</Grid>;
           })
           :null}
-          <div className="logo tituloMediano">HOLA</div>
       </Grid>
     </div>
     

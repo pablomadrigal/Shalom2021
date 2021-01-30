@@ -162,7 +162,7 @@ function HomePage() {
                 {rallyState.map((equipo, index) => {
                   console.log(equipo)
                   return <Grid key={index} item 
-                  className={"flex-col-scroll logo tituloPequeno"}  style={{ height: '100px'}}>
+                  className={"logo tituloPequeno"}  style={{ height: '150px'}}>
                   <b>{equipo.Nombre}<span>     -     </span><span>{equipo.Puntaje}</span></b>
                 </Grid>;
                 })}
@@ -203,7 +203,7 @@ function HomePage() {
 
     return (
         <div className={classes.root}>
-            <Header Login={handleLogin} Signup={handleSignup} Signout={handleSignout} Home={handleHome} Avatar={()=>setPage(4)} AvatarState={avatarState}  Page={page}/>
+            <Header Login={handleLogin} Signup={handleSignup} Signout={handleSignout} Home={handleHome} Avatar={()=>setPage(4)} Perfil={()=>setPage(5)} AvatarState={avatarState}  Page={page}/>
             <Dialog onClose={handleClose} aria-labelledby="simple-dialog-title" open={openModal}>
                 {modalBody}
             </Dialog>

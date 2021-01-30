@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
 
 const StyledMenu = withStyles((theme) => ({
   paper: {
-    backgroundColor: theme.palette.common.black,
+    backgroundColor: 'transparent',
   },
 }))((props) => (
   <Menu
@@ -47,12 +47,12 @@ const StyledMenu = withStyles((theme) => ({
 
 const StyledMenuItem = withStyles((theme) => ({
   root: {
-    backgroundColor: theme.palette.common.black,
+    backgroundColor: 'transparent',
     '&:focus': {
-      backgroundColor: theme.palette.common.black,
+      backgroundColor: 'transparent',
     },
     '&:selected': {
-      backgroundColor: theme.palette.common.black,
+      backgroundColor: 'transparent',
     }
   },
 }))(MenuItem);
@@ -99,11 +99,15 @@ export default function Header(props) {
       </StyledMenuItem>
       <StyledMenuItem>
         {sign
-        ? <button className="a-n2" onClick={() => {setAnchorEl(null);handleSignout()}}>Logout</button> 
+        ? <button className="a-n2" onClick={() => {setAnchorEl(null);props.Perfil()}}>Perfil</button> 
         : <button className="a-n2" onClick={() => {setAnchorEl(null);props.Signup()}}>Signup</button>
         }
-
-        
+      </StyledMenuItem>
+      <StyledMenuItem>
+        {sign
+        ? <button className="a-n2" onClick={() => {setAnchorEl(null);handleSignout()}}>Logout</button> 
+        : null
+        }
       </StyledMenuItem>
     </StyledMenu>
   );

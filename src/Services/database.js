@@ -8,15 +8,23 @@ export function addAvataaar(avatarState) {
     }
 }
 
-export function addUserInfo(nombre) {
+export function addUserName(name) {
     var user = null;
+    var info = {
+        nombre: name
+    };
     if (auth().currentUser) {
         user = auth().currentUser.uid;
-        db.ref("/users/" + user + "/nombre/").set(nombre);
+        db.ref("/users/" + user).update(info);
+
+        /*console.log("update")
+        db.ref("/users/" + user).update(info);
+        console.log("write")
+        db.ref("/users/" + user + "/nombre/").set(name);*/
     }
 }
 
-export function getAvataaar() {
+export function getUserInfo() {
     if (auth().currentUser) {
         var user = auth().currentUser.uid;
         return db.ref('/users/' + user).once('value')
@@ -25,6 +33,19 @@ export function getAvataaar() {
     }
 }
 
+/*export function getAvataaar() {
+    if (auth().currentUser) {
+        var user = auth().currentUser.uid;
+        return db.ref('/users/' + user).once('value')
+    }else{
+        return null;
+    }
+}*/
+
 export function getRally() {
     return db.ref('/Rally/')
+}
+
+export function getMaterial() {
+    return db.ref('/Material/')
 }

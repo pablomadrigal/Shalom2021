@@ -93,20 +93,14 @@ export default function Header(props) {
     >
       <StyledMenuItem>
         {sign
-        ? <button className="a-n2" onClick={() => {setAnchorEl(null);props.Avatar()}}>Avatar</button> 
+        ? <button className="a-n2" onClick={() => {setAnchorEl(null);props.Perfil()}}>Perfil</button> 
         : <button className="a-n2" onClick={() => {setAnchorEl(null);props.Login()}}>Login</button> 
         }
       </StyledMenuItem>
       <StyledMenuItem>
         {sign
-        ? <button className="a-n2" onClick={() => {setAnchorEl(null);props.Perfil()}}>Perfil</button> 
-        : <button className="a-n2" onClick={() => {setAnchorEl(null);props.Signup()}}>Signup</button>
-        }
-      </StyledMenuItem>
-      <StyledMenuItem>
-        {sign
         ? <button className="a-n2" onClick={() => {setAnchorEl(null);handleSignout()}}>Logout</button> 
-        : null
+        : <button className="a-n2" onClick={() => {setAnchorEl(null);props.Signup()}}>Signup</button>
         }
       </StyledMenuItem>
     </StyledMenu>

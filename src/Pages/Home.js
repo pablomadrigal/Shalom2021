@@ -10,6 +10,7 @@ import '../App.css'
 import Header from '../Components/General/Header';
 import SignIn from "../Pages/Login";
 import SignUp from "../Pages/Signup"
+import Perfil from "../Pages/Perfil"
 
 import SantoCard from '../Components/Santos/SantosCard'
 import MaterialCard from '../Components/General/MaterialCard'
@@ -18,7 +19,7 @@ import AvatarGenerator from '../Components/Avataaar/AvatarGenerator'
 import { material } from '../Data/materialData'
 import { santos } from '../Data/santosData'
 import { auth } from '../Services/firebase';
-import {getAvataaar, getRally} from "../Services/database"
+import {getUserInfo, getRally, getMaterial} from "../Services/database"
 import { AVATAAAR_TYPES } from "../Data/avataaarData";
 
 const useStyles = makeStyles((theme) => ({
@@ -57,29 +58,40 @@ const initialAvatarState = {
 };
 
 function HomePage() {
-    const classes = useStyles();
-    const [openModal, setOpenModal] = useState(false);
-    const [registro, setRegistro] = useState(true);
-    const [page, setPage] = useState(0);
-    const [avatarState, setAvatarState] = useState(initialAvatarState);
-    const [rallyState, setRallyState] = useState([{Nombre:"Hola"},{Nombre:"Adios"}]);
+  const classes = useStyles();
+  const [openModal, setOpenModal] = useState(false);
+  const [registro, setRegistro] = useState(true);
+  const [page, setPage] = useState(0);
+  const [avatarState, setAvatarState] = useState(initialAvatarState);
+  const [rallyState, setRallyState] = useState([{Nombre:"Hola"},{Nombre:"Adios"}]);
+  const [materialState, setMaterialState] = useState(material);
 
-    useEffect(() => {
-      getAvatar();
-      var foo = [];
-      getRally().once('value').then(function(dataSnapshot) {
-        dataSnapshot.forEach((childSnapshot) => {
-          foo.push(childSnapshot.val());
-        });
-        setRallyState(foo);
+  useEffect(() => {
+    getAvatar();
+    var rallyList = [];
+    var materialList = [];
+    getRally().once('value').then(function(dataSnapshot) {
+      dataSnapshot.forEach((childSnapshot) => {
+        rallyList.push(childSnapshot.val());
       });
-    },[]);
-
+      setRallyState(rallyList);
+    });
+    
+    getMaterial().once('value').then(function(dataSnapshot) {
+      dataSnapshot.forEach((childSnapshot) => {
+        materialList.push(childSnapshot.val());
+      });
+      setMaterialState(materialList);
+      console.log(materialList);
+    });
+  },[]);
 
   const getAvatar = () =>{
-    if(getAvataaar()!==null){
-      getAvataaar().then((data) =>{
-        setAvatarState(data.val().avataaar);
+    if(getUserInfo()!==null){
+      getUserInfo().then((data) =>{
+        if(data.val().avataaar !== null){
+          setAvatarState(data.val().avataaar);
+        }
       });
     }
   }
@@ -110,7 +122,7 @@ function HomePage() {
     return(<div>
       {(()=>{
         switch (page) {
-          case 0:
+          case 0: //Inicio
             return <Grid 
               container
               direction="row"
@@ -131,7 +143,7 @@ function HomePage() {
                   <button className="a-n2" onClick={() => setPage(3)}>Recursos</button>
                 </Grid>}
             </Grid>;
-          case 1:
+          case 1: //Santos
             return (
               <div
               className={"flex-section"}
@@ -150,7 +162,7 @@ function HomePage() {
               </Grid>
               </div>
             );
-          case 2:
+          case 2: //Rally
             return (
               <Grid
               container
@@ -167,7 +179,7 @@ function HomePage() {
                 </Grid>;
                 })}
             </Grid>);
-          case 3:
+          case 3: //Material
             return (
               <div
               className={"flex-section"}>
@@ -181,13 +193,15 @@ function HomePage() {
               alignItems="center" 
               spacing={5}
               >  
-                {material.map((mat, index) => {
+                {materialState.map((mat, index) => {
                   return <Grid key={index} item> <MaterialCard material={mat}/></Grid>;
                 })}
               </Grid></div></div>
             ); //MaterialCard
-          case 4:
+          case 4: //Avatar
             return <div><AvatarGenerator initialAvatarState={avatarState}/></div>;
+          case 5: //Profile
+            return <div><Perfil setPage={setPage}/></div>;
           default:
             return null;
         }

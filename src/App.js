@@ -29,7 +29,7 @@ function App() {
         alignItems="center"
         justify="center">
           <CssBaseline />
-        <Grid item xs = {12} className="tituloGrande logo">
+        <Grid item xs = {12} className="tituloMediano logo">
           <b>E<span>N</span>T<span>E</span>R       <span>T</span>H<span>E</span>         <span>G</span>A<span>M</span>E</b>
         </Grid>
         <Grid item xs = {12}>

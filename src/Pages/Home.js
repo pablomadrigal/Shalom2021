@@ -5,6 +5,7 @@ import {
     Dialog,
     Grid
 } from '@material-ui/core'
+import ReactPlayer from 'react-player/lazy'
 
 import '../App.css'
 import Header from '../Components/General/Header';
@@ -134,14 +135,17 @@ function HomePage() {
                   <b>A        <span>L</span>I<span>G</span>HT     <span>O</span>F<span>         H</span>O<span>P</span><span>E</span></b>
                 </Grid>
               <Grid item xs={6} align="center">
-                  <button className="a-n2" onClick={() => setPage(1)}>Santos</button>
+                <button className="a-n2" onClick={() => setPage(1)}>Santos</button>
               </Grid>
               <Grid item xs={6} align="center">
-                  <button className="a-n2" onClick={() => setPage(2)}>Rally</button>
+                <button className="a-n2" onClick={() => setPage(2)}>Rally</button>
               </Grid>
-              {<Grid item xs={6} align="center">
-                  <button className="a-n2" onClick={() => setPage(3)}>Recursos</button>
-                </Grid>}
+              <Grid item xs={6} align="center">
+                <button className="a-n2" onClick={() => setPage(3)}>Recursos</button>
+              </Grid>
+              <Grid item xs={6} align="center">
+                <button className="a-n2" onClick={() => setPage(6)}>Testimonio</button>
+              </Grid>
             </Grid>;
           case 1: //Santos
             return (
@@ -202,6 +206,14 @@ function HomePage() {
             return <div><AvatarGenerator initialAvatarState={avatarState}/></div>;
           case 5: //Profile
             return <div><Perfil setPage={setPage}/></div>;
+          case 6: //Profile
+            return <div>
+                    <ReactPlayer 
+                    width="100%"
+                    height="100%" 
+                    url='https://youtu.be/AezjRsuz8fw' 
+                    controls/>
+                  </div>;
           default:
             return null;
         }
